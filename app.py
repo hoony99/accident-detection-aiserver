@@ -31,21 +31,22 @@ app = Flask(__name__)
 CORS(app)
 
 # AWS 설정 
-# S3_IMG_BUCKET = 'capstone-accident-img'
-# S3_VIDEO_BUCKET = 'capstone-video'
-# S3_KEY = 'AKIA6ODU7LGDAOSEOHO4'
-# S3_SECRET = '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'
-# # S3 클라이언트 생성
-# s3_client = boto3.client(
-#     's3',
-#     aws_access_key_id=S3_KEY,
-#     aws_secret_access_key=S3_SECRET,
-#     region_name=S3_REGION
-# )
-s3_client = boto3.client('s3')
 S3_IMG_BUCKET = 'capstone-accident-img'
 S3_VIDEO_BUCKET = 'capstone-video'
+S3_KEY = 'AKIA6ODU7LGDAOSEOHO4'
+S3_SECRET = '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'
 S3_REGION = 'ap-northeast-2'
+# S3 클라이언트 생성
+s3_client = boto3.client(
+    's3',
+    aws_access_key_id=S3_KEY,
+    aws_secret_access_key=S3_SECRET,
+    region_name=S3_REGION
+)
+# s3_client = boto3.client('s3')
+# S3_IMG_BUCKET = 'capstone-accident-img'
+# S3_VIDEO_BUCKET = 'capstone-video'
+# S3_REGION = 'ap-northeast-2'
 
 app.config['SECRET_KEY'] = os.urandom(24).hex()
 app.config['ALLOWED_EXTENSIONS'] = {'mov', 'mp4', 'avi'}
@@ -379,5 +380,5 @@ def upload_video():
 
     
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
 

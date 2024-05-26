@@ -1,0 +1,15 @@
+gunicorn
+werkzeug
+flask
+flask-cors
+flask-jwt-extended
+opencv-python-headless
+numpy
+torch
+torchvision
+requests
+boto3
+python-dotenv
+mysql-connector-python
+ultralytics
+ffmpeg-python
