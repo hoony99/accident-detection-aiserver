@@ -1,4 +1,3 @@
-gunicorn
 werkzeug
 flask
 flask-cors
