@@ -18,6 +18,7 @@ from ultralytics import YOLO
 import logging
 from logging.handlers import RotatingFileHandler
 import requests
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app, resources={r"/api/*": {"origins": "*"}})  # CORS 설정 추가
@@ -26,12 +27,14 @@ app.config['SECRET_KEY'] = os.urandom(24).hex()
 app.config['ALLOWED_EXTENSIONS'] = {'mov', 'mp4', 'avi'}
 app.config['JWT_SECRET_KEY'] = 'your_jwt_secret_key'  # JWT 암호화 키 설정
 
+load_dotenv()
+
 # AWS 설정
-S3_IMG_BUCKET = 'capstone-accident-img'
-S3_VIDEO_BUCKET = 'capstone-video'
-S3_KEY = 'AKIA6ODU7LGDAOSEOHO4'
-S3_SECRET = 'ND6svWx+F9HdX0+DYdN2yDUQwRoQPMfw3tURJL1I'
-S3_REGION = 'ap-northeast-2'
+S3_IMG_BUCKET = os.getenv('S3_IMG_BUCKET')
+S3_VIDEO_BUCKET = os.getenv('S3_VIDEO_BUCKET')
+S3_KEY = os.getenv('S3_KEY')
+S3_SECRET = os.getenv('S3_SECRET')
+S3_REGION = os.getenv('S3_REGION')
 # S3 클라이언트 생성
 s3_client = boto3.client(
     's3',
